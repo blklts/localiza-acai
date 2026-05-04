@@ -191,7 +191,7 @@ export default function MapComponent() {
 
       {/* Filter bar */}
       <div
-        className="fixed top-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white rounded-2xl shadow-lg px-4 py-2 items-center"
+        className="fixed top-4 left-2 right-2 md:left-1/2 md:right-auto md:-translate-x-1/2 flex flex-wrap gap-x-2 gap-y-1 bg-white rounded-2xl shadow-lg px-4 py-2 items-center justify-center"
         style={{ zIndex: 1000 }}
       >
         <select
@@ -205,7 +205,7 @@ export default function MapComponent() {
           <option value="5">Até 5 km</option>
         </select>
 
-        <span className="text-gray-200 select-none">|</span>
+        <span className="text-gray-200 select-none hidden sm:inline">|</span>
 
         <select
           className="text-sm text-gray-700 bg-transparent outline-none cursor-pointer pr-1"
@@ -218,9 +218,9 @@ export default function MapComponent() {
           <option value="3">3+ estrelas</option>
         </select>
 
-        <span className="text-gray-200 select-none">|</span>
+        <span className="text-gray-200 select-none hidden sm:inline">|</span>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           <span className="text-sm text-gray-700">💰</span>
           <input
             type="range"
@@ -229,14 +229,14 @@ export default function MapComponent() {
             step={1}
             value={filterPriceMax}
             onChange={(e) => setFilterPriceMax(Number(e.target.value))}
-            className="w-24 accent-purple-600 cursor-pointer"
+            className="w-20 md:w-24 accent-purple-600 cursor-pointer"
           />
-          <span className="text-xs text-gray-600 w-16 text-right">
+          <span className="text-xs text-gray-600 w-12 md:w-16 text-right">
             {filterPriceMax < 50 ? `até R$${filterPriceMax}` : 'qualquer'}
           </span>
         </div>
 
-        <span className="text-gray-200 select-none">|</span>
+        <span className="text-gray-200 select-none hidden sm:inline">|</span>
         <button
           onClick={() => { setFilterDistance(null); setFilterStars(null); setFilterPriceMax(50); }}
           className={`text-xs text-purple-600 hover:text-purple-800 font-medium whitespace-nowrap transition-opacity ${
