@@ -250,7 +250,8 @@ export default function MapComponent({ q, sort, minStars, maxDistance }: MapProp
           </Link>
 
           {/* Scrollable filter strip */}
-          <div className="flex gap-2 overflow-x-auto flex-1 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+          <div className="relative flex-1 overflow-hidden">
+            <div className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
 
         {/* Search */}
         <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
@@ -322,6 +323,8 @@ export default function MapComponent({ q, sort, minStars, maxDistance }: MapProp
         >
           Limpar
         </button>
+            </div>
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-primary to-transparent" />
           </div>
       </div>
 
