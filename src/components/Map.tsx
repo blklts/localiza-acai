@@ -7,6 +7,7 @@ import { MapContainer, TileLayer, Marker, Tooltip, ZoomControl } from 'react-lea
 import { locations, AcaiLocation, MenuItem } from '@/data/locations';
 import { FaSearch, FaReply } from 'react-icons/fa';
 import Link from 'next/link';
+import { useMobile } from '@/hooks/useMobile';
 
 function createAcaiIcon(stars: number) {
   return L.divIcon({
@@ -55,6 +56,7 @@ export interface MapProps {
 }
 
 export default function MapComponent({ q, sort, minStars, maxDistance }: MapProps) {
+  const isMobile = useMobile();
   const [selected, setSelected] = useState<AcaiLocation | null>(null);
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [feedbacks, setFeedbacks] = useState<Record<string, string>>({});
@@ -102,11 +104,19 @@ export default function MapComponent({ q, sort, minStars, maxDistance }: MapProp
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       {/* Sidebar */}
       <div
-        className={`fixed left-0 top-[68px] h-[calc(100%-68px)] w-80 bg-white shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out ${
-          selected ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed bg-white shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out ${
+          isMobile
+            ? `left-0 right-0 bottom-0 h-[75vh] rounded-t-2xl ${selected ? 'translate-y-0' : 'translate-y-full'}`
+            : `left-0 top-[68px] h-[calc(100%-68px)] w-80 ${selected ? 'translate-x-0' : '-translate-x-full'}`
         }`}
         style={{ zIndex: 1000 }}
       >
+        {/* Mobile drag handle */}
+        {isMobile && (
+          <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
+            <div className="w-10 h-1 rounded-full bg-gray-300" />
+          </div>
+        )}
         {selected && (
           <div className="flex flex-col">
             {/* Image + close button */}
@@ -227,18 +237,20 @@ export default function MapComponent({ q, sort, minStars, maxDistance }: MapProp
 
       {/* Filter bar */}
       <div
-        className="fixed top-0 left-0 right-0 bg-primary rounded-b-[20px] shadow-lg px-4 py-3"
+        className="fixed top-0 left-0 right-0 bg-primary rounded-b-[20px] shadow-lg px-4 py-3 flex items-center gap-3"
         style={{ zIndex: 1000 }}
       >
-        <div className="relative flex flex-wrap gap-2 items-center justify-center">
           {/* Back button */}
           <Link
             href="/"
-            className="absolute left-0 inline-flex items-center justify-center bg-secondary hover:bg-secondary-hover text-white rounded-lg w-9 h-9 transition-colors flex-shrink-0"
+            className="inline-flex items-center justify-center bg-secondary hover:bg-secondary-hover text-white rounded-lg w-9 h-9 transition-colors flex-shrink-0"
             aria-label="Voltar"
           >
             <FaReply />
           </Link>
+
+          {/* Scrollable filter strip */}
+          <div className="flex gap-2 overflow-x-auto flex-1 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
 
         {/* Search */}
         <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
@@ -310,7 +322,7 @@ export default function MapComponent({ q, sort, minStars, maxDistance }: MapProp
         >
           Limpar
         </button>
-        </div>
+          </div>
       </div>
 
       {/* Map */}
