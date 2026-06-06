@@ -3,15 +3,19 @@
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useState, useEffect, useMemo } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import { locations, AcaiLocation } from '@/data/locations';
+import { MapContainer, TileLayer, Marker, Tooltip, ZoomControl } from 'react-leaflet';
+import { locations, AcaiLocation, MenuItem } from '@/data/locations';
+import { FaSearch, FaReply } from 'react-icons/fa';
+import Link from 'next/link';
 
-const acaiIcon = L.divIcon({
-  html: '<div style="font-size:28px;line-height:1;margin-top:-14px;">🍇</div>',
-  className: '',
-  iconSize: [30, 30],
-  iconAnchor: [15, 28],
-});
+function createAcaiIcon(stars: number) {
+  return L.divIcon({
+    html: `<div style="background:#DB6006;border-radius:20px;padding:3px 8px;box-shadow:0 2px 6px rgba(0,0,0,0.25);font-size:13px;font-weight:700;color:#f5f5f5;white-space:nowrap;display:flex;align-items:center;gap:2px;">${stars}<img src="/icons/estrela 2.svg" alt="" style="width:13px;height:13px;filter:brightness(0) invert(1);" /></div>`,
+    className: '',
+    iconSize: [40, 26],
+    iconAnchor: [20, 13],
+  });
+}
 
 const BELEM_CENTER: [number, number] = [-1.4558, -48.4902];
 
@@ -43,14 +47,23 @@ function Stars({ count }: { count: number }) {
   );
 }
 
-export default function MapComponent() {
+export interface MapProps {
+  q?: string;
+  sort?: string;
+  minStars?: number;
+  maxDistance?: number;
+}
+
+export default function MapComponent({ q, sort, minStars, maxDistance }: MapProps) {
   const [selected, setSelected] = useState<AcaiLocation | null>(null);
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [feedbacks, setFeedbacks] = useState<Record<string, string>>({});
   const [sent, setSent] = useState<Record<string, boolean>>({});
-  const [filterDistance, setFilterDistance] = useState<number | null>(null);
-  const [filterStars, setFilterStars] = useState<number | null>(null);
-  const [filterPriceMax, setFilterPriceMax] = useState<number>(50);
+  const [filterDistance, setFilterDistance] = useState<number | null>(maxDistance ?? null);
+  const [filterStars, setFilterStars] = useState<number | null>(minStars ?? null);
+  const lowestPrice = Math.min(...locations.map(l => parsePriceMin(l.price)));
+  const [filterPriceMax, setFilterPriceMax] = useState<number>(sort === 'price' ? lowestPrice : 50);
+  const [filterQuery, setFilterQuery] = useState<string>(q ?? '');
 
   useEffect(() => {
     if (!navigator.geolocation) return;
@@ -66,7 +79,11 @@ export default function MapComponent() {
       : null;
 
   const filteredLocations = useMemo(() => {
-    return locations.filter((loc) => {
+    let result = locations.filter((loc) => {
+      if (filterQuery) {
+        const lower = filterQuery.toLowerCase();
+        if (!loc.name.toLowerCase().includes(lower) && !loc.address.toLowerCase().includes(lower)) return false;
+      }
       if (filterStars !== null && loc.stars < filterStars) return false;
       if (filterPriceMax < 50 && parsePriceMin(loc.price) > filterPriceMax) return false;
       if (filterDistance !== null && userCoords) {
@@ -75,13 +92,17 @@ export default function MapComponent() {
       }
       return true;
     });
-  }, [filterStars, filterPriceMax, filterDistance, userCoords]);
+    if (sort === 'price') {
+      result = [...result].sort((a, b) => parsePriceMin(a.price) - parsePriceMin(b.price));
+    }
+    return result;
+  }, [filterQuery, filterStars, filterPriceMax, filterDistance, userCoords, sort]);
 
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       {/* Sidebar */}
       <div
-        className={`fixed left-0 top-0 h-full w-80 bg-white shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out ${
+        className={`fixed left-0 top-[68px] h-[calc(100%-68px)] w-80 bg-white shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out ${
           selected ? 'translate-x-0' : '-translate-x-full'
         }`}
         style={{ zIndex: 1000 }}
@@ -141,13 +162,28 @@ export default function MapComponent() {
                 )}
               </div>
 
-              {/* Additional info (only when present) */}
-              {selected.additionalInfo && (
+              {/* Menu */}
+              {selected.menu && selected.menu.length > 0 && (
                 <>
                   <hr className="border-gray-200" />
-                  <div className="flex flex-col gap-1">
-                    <p className="text-sm font-semibold text-gray-800">Informações adicionais</p>
-                    <p className="text-sm text-gray-600 leading-relaxed">{selected.additionalInfo}</p>
+                  <div className="flex flex-col gap-3">
+                    <p className="text-sm font-semibold text-gray-800">Cardápio Adicional</p>
+                    <div className="flex flex-col gap-2">
+                      {selected.menu.map((item: MenuItem, i: number) => (
+                        <div key={i} className="flex items-center gap-3 bg-gray-50 rounded-lg p-2">
+                          <img
+                            src={item.imageUrl}
+                            alt={item.name}
+                            className="w-14 h-14 object-cover rounded-md flex-shrink-0"
+                          />
+                          <div className="flex flex-col gap-0.5 min-w-0">
+                            <span className="text-sm font-medium text-gray-800 leading-tight truncate">{item.name}</span>
+                            <span className="text-xs text-gray-500">{item.unit}</span>
+                            <span className="text-sm font-semibold text-orange-600">{item.price}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </>
               )}
@@ -191,37 +227,34 @@ export default function MapComponent() {
 
       {/* Filter bar */}
       <div
-        className="fixed top-4 left-2 right-2 md:left-1/2 md:right-auto md:-translate-x-1/2 flex flex-wrap gap-x-2 gap-y-1 bg-white rounded-2xl shadow-lg px-4 py-2 items-center justify-center"
+        className="fixed top-0 left-0 right-0 bg-primary rounded-b-[20px] shadow-lg px-4 py-3"
         style={{ zIndex: 1000 }}
       >
-        <select
-          className="text-sm text-gray-700 bg-transparent outline-none cursor-pointer pr-1"
-          value={filterDistance ?? ''}
-          onChange={(e) => setFilterDistance(e.target.value === '' ? null : Number(e.target.value))}
-        >
-          <option value="">📏 Distância</option>
-          <option value="1">Até 1 km</option>
-          <option value="2">Até 2 km</option>
-          <option value="5">Até 5 km</option>
-        </select>
+        <div className="relative flex flex-wrap gap-2 items-center justify-center">
+          {/* Back button */}
+          <Link
+            href="/"
+            className="absolute left-0 inline-flex items-center justify-center bg-secondary hover:bg-secondary-hover text-white rounded-lg w-9 h-9 transition-colors flex-shrink-0"
+            aria-label="Voltar"
+          >
+            <FaReply />
+          </Link>
 
-        <span className="text-gray-200 select-none hidden sm:inline">|</span>
+        {/* Search */}
+        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+          <FaSearch className="flex-shrink-0 text-sm" />
+          <input
+            type="text"
+            value={filterQuery}
+            onChange={(e) => setFilterQuery(e.target.value)}
+            placeholder="Buscar por nome"
+            className="bg-transparent outline-none placeholder-white/60 text-sm w-32"
+          />
+        </div>
 
-        <select
-          className="text-sm text-gray-700 bg-transparent outline-none cursor-pointer pr-1"
-          value={filterStars ?? ''}
-          onChange={(e) => setFilterStars(e.target.value === '' ? null : Number(e.target.value))}
-        >
-          <option value="">★ Estrelas</option>
-          <option value="5">5 estrelas</option>
-          <option value="4">4+ estrelas</option>
-          <option value="3">3+ estrelas</option>
-        </select>
-
-        <span className="text-gray-200 select-none hidden sm:inline">|</span>
-
-        <div className="flex items-center gap-1 md:gap-2">
-          <span className="text-sm text-gray-700">💰</span>
+        {/* Price */}
+        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+          <img src="/icons/dinheirus.svg" alt="" style={{ width: '1em', height: '1em', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
           <input
             type="range"
             min={5}
@@ -229,32 +262,65 @@ export default function MapComponent() {
             step={1}
             value={filterPriceMax}
             onChange={(e) => setFilterPriceMax(Number(e.target.value))}
-            className="w-20 md:w-24 accent-purple-600 cursor-pointer"
+            className="w-20 accent-white cursor-pointer"
           />
-          <span className="text-xs text-gray-600 w-12 md:w-16 text-right">
+          <span className="text-xs w-14 text-right">
             {filterPriceMax < 50 ? `até R$${filterPriceMax}` : 'qualquer'}
           </span>
         </div>
 
-        <span className="text-gray-200 select-none hidden sm:inline">|</span>
+        {/* Distance */}
+        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+          <img src="/icons/geolocalização.svg" alt="" style={{ width: '1em', height: '1em', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
+          <select
+            className="bg-transparent outline-none cursor-pointer text-sm font-semibold text-white"
+            value={filterDistance ?? ''}
+            onChange={(e) => setFilterDistance(e.target.value === '' ? null : Number(e.target.value))}
+          >
+            <option value=""  className="bg-white text-gray-800">Distância</option>
+            <option value="1" className="bg-white text-gray-800">Até 1 km</option>
+            <option value="2" className="bg-white text-gray-800">Até 2 km</option>
+            <option value="5" className="bg-white text-gray-800">Até 5 km</option>
+          </select>
+        </div>
+
+        {/* Stars */}
+        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+          <img src="/icons/estrela 1.svg" alt="" style={{ width: '1em', height: '1em', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
+          <select
+            className="bg-transparent outline-none cursor-pointer text-sm font-semibold text-white"
+            value={filterStars ?? ''}
+            onChange={(e) => setFilterStars(e.target.value === '' ? null : Number(e.target.value))}
+          >
+            <option value=""  className="bg-white text-gray-800">Estrelas</option>
+            <option value="5" className="bg-white text-gray-800">5 estrelas</option>
+            <option value="4" className="bg-white text-gray-800">4+ estrelas</option>
+            <option value="3" className="bg-white text-gray-800">3+ estrelas</option>
+          </select>
+        </div>
+
+        {/* Clear */}
         <button
-          onClick={() => { setFilterDistance(null); setFilterStars(null); setFilterPriceMax(50); }}
-          className={`text-xs text-purple-600 hover:text-purple-800 font-medium whitespace-nowrap transition-opacity ${
-            filterDistance !== null || filterStars !== null || filterPriceMax < 50
+          onClick={() => { setFilterDistance(null); setFilterStars(null); setFilterPriceMax(50); setFilterQuery(''); }}
+          className={`inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 text-sm whitespace-nowrap transition-opacity hover:bg-secondary-hover ${
+            filterDistance !== null || filterStars !== null || filterPriceMax < 50 || filterQuery
               ? 'opacity-100 pointer-events-auto'
               : 'opacity-0 pointer-events-none'
           }`}
         >
           Limpar
         </button>
+        </div>
       </div>
 
       {/* Map */}
       <MapContainer
         center={BELEM_CENTER}
         zoom={14}
+        zoomControl={false}
         style={{ height: '100%', width: '100%' }}
       >
+        <ZoomControl position="bottomleft" />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -263,9 +329,16 @@ export default function MapComponent() {
           <Marker
             key={loc.id}
             position={[loc.lat, loc.lng]}
-            icon={acaiIcon}
+            icon={createAcaiIcon(loc.stars)}
             eventHandlers={{ click: () => setSelected(loc) }}
-          />
+          >
+            <Tooltip direction="top" offset={[0, -16]} opacity={1}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', padding: '2px' }}>
+                <img src={loc.imageUrl} alt={loc.name} style={{ width: 130, height: 80, objectFit: 'cover', borderRadius: 6 }} />
+                <span style={{ fontWeight: 600, fontSize: 13, maxWidth: 130, textAlign: 'center', lineHeight: 1.3 }}>{loc.name}</span>
+              </div>
+            </Tooltip>
+          </Marker>
         ))}
       </MapContainer>
     </div>

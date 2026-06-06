@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_3" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 2800">
+  <!-- Generator: Adobe Illustrator 29.8.6, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #552678;
+        stroke-width: 90px;
+      }
+
+      .st0, .st1, .st2 {
+        fill: none;
+      }
+
+      .st0, .st2 {
+        stroke-miterlimit: 10;
+      }
+
+      .st2 {
+        stroke: #db6112;
+        stroke-width: 15px;
+      }
+
+      .st3 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st1" x="130.31" y="-107.35" width="869.69" height="2907.35"/>
+    </clipPath>
+  </defs>
+  <g class="st3">
+    <path class="st0" d="M1198.17,464.48c-317.52,406.7-349.27,700.39-316.91,895.63,38.72,233.66,160.79,275.29,144.68,475.37-26.31,326.61-367.48,412.81-434.04,764.73-35.53,187.88,25.2,356.37,75.78,461.59"/>
+    <path class="st2" d="M1053.49,133.78c-113.72,75.18-294.24,221.39-330.69,440.92-8.98,54.11-12.22,130.76,96.45,434.04,171.51,478.65,277.97,562.38,275.58,806.07-.88,90.21-2.38,242.55-96.45,385.81-173,263.46-483.96,229.52-578.71,461.59-27.8,68.08-40.98,168.82,13.78,316.91"/>
+  </g>
+</svg>

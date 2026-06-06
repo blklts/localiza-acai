@@ -1,20 +1,21 @@
-'use client';
-
-import dynamic from 'next/dynamic';
-
-const MapComponent = dynamic(() => import('@/components/Map'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center bg-zinc-100">
-      <p className="text-zinc-500">Carregando mapa...</p>
-    </div>
-  ),
-});
+import Header from '@/components/landing/Header';
+import HeroSection from '@/components/landing/HeroSection';
+import Footer from '@/components/landing/Footer';
 
 export default function Home() {
   return (
-    <main className="h-screen w-full">
-      <MapComponent />
-    </main>
+    <>
+      <Header />
+      <div className="relative flex-1 flex flex-col">
+        <HeroSection />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/elements/decoration/footer.png"
+          alt=""
+          className="absolute bottom-0 left-0 w-full h-auto block pointer-events-none"
+        />
+      </div>
+      <Footer />
+    </>
   );
 }

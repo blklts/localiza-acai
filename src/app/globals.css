@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
+/*
+ * ─── Design tokens ──────────────────────────────────────────────────────────
+ * Edit the values in :root to retheme the entire site.
+ * Components use Tailwind utilities (bg-primary, text-accent, etc.) that
+ * are generated automatically from these variables.
+ * ────────────────────────────────────────────────────────────────────────────
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary brand — header, footer, headings */
+  --primary:           #57217A;
+  --primary-dark:      #3b0764;  /* hover on primary surfaces */
+  --primary-border:    #6b21a8;  /* borders on primary backgrounds */
+
+  /* Accent — buttons, CTAs */
+  --accent:            #43AB8D;
+
+  /* Lighter brand tones */
+  --accent-light:      #a855f7;  /* icons, subtle highlights */
+  --on-primary:        #e9d5ff;  /* text / icons sitting on primary bg */
+  --on-primary-hover:  #c084fc;
+  --primary-tint:      #faf5ff;  /* very light background tint */
+
+  /* Secondary — hero buttons, highlights */
+  --secondary:         #DB6006;
+  --secondary-hover:   #c05504;
+
+  /* Page */
+  --background:        #ECE1D7;
+    --background-2:   #F5F5F5;
+  --surface:           #ffffff;
+  --foreground:        #171717;
+  --muted:             #71717a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary:           var(--primary);
+  --color-primary-dark:      var(--primary-dark);
+  --color-primary-border:    var(--primary-border);
+  --color-accent:            var(--accent);
+  --color-accent-light:      var(--accent-light);
+  --color-on-primary:        var(--on-primary);
+  --color-on-primary-hover:  var(--on-primary-hover);
+  --color-primary-tint:      var(--primary-tint);
+  --color-secondary:         var(--secondary);
+  --color-secondary-hover:   var(--secondary-hover);
+  --color-background:        var(--background);
+  --color-surface:           var(--surface);
+  --color-foreground:        var(--foreground);
+  --color-muted:             var(--muted);
+  --font-sans:               var(--font-poppins);
+  --font-mono:               var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@theme inline {
+  --animate-marquee: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--marquee-travel, -66.67%)); }
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
