@@ -15,16 +15,16 @@ export default function Home() {
           alt=""
           className="absolute bottom-0 left-0 w-full h-auto pointer-events-none hidden md:block"
         />
-        {/* Mobile decorative image */}
-        <div className="block md:hidden mt-[10px] mx-[30px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/elements/decoration/main/rabeta.webp"
-            alt=""
-            className="w-full pointer-events-none"
-            style={{ transform: 'scaleX(-1)' }}
-          />
-        </div>
+      </div>
+      {/* Mobile decorative image — outside the flex-1 hero wrapper so it isn't clipped */}
+      <div className="block md:hidden mt-[10px] mx-[30px]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/elements/decoration/main/rabeta.webp"
+          alt=""
+          className="w-full h-auto pointer-events-none"
+          style={{ transform: 'scaleX(-1)' }}
+        />
       </div>
       <Footer />
     </>
