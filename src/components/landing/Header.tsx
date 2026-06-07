@@ -11,7 +11,7 @@ export default function Header() {
         <div className="flex justify-start">
           <Link href="#" className="flex items-center gap-2 text-sm hover:text-purple-200 transition-colors">
             <FaUserCircle className="text-xl" />
-            <span>Entrar</span>
+            <span className="hidden md:inline">Entrar</span>
           </Link>
         </div>
         <div className="flex justify-center">

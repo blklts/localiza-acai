@@ -27,7 +27,7 @@ export default function AccessibilityMenu() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/acessibilidade.svg" alt="" width={20} height={20} className="brightness-0 invert" />
-        <span className="underline">Acessibilidade</span>
+        <span className="underline hidden md:inline">Acessibilidade</span>
       </button>
 
       {open && (

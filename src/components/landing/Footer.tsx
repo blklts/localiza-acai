@@ -7,7 +7,7 @@ const contactLinks = [
 export default function Footer() {
   return (
     <footer className="bg-[#997aaf] text-[#f5f5f5]">
-      <div className="grid grid-cols-2 gap-6 px-[100px] pb-4 w-full">
+      <div className="flex flex-col gap-4 px-6 pb-4 md:grid md:grid-cols-2 md:gap-6 md:px-[100px] w-full">
         <div className="flex flex-col gap-1 text-sm text-[#f5f5f5]">
           <p>Copyright © 2026 LocalizAçaí Projeto acadêmico. Universidade do Estado do Pará - UEPA</p>
           <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5">
@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-2 justify-center">
+        <div className="flex flex-col items-start gap-2 md:items-end md:justify-center">
           <span className="text-xs font-semibold uppercase tracking-wider opacity-70">Entre em contato</span>
           <div className="flex gap-2">
             {contactLinks.map(({ iconSrc, label, href }) => (
@@ -31,6 +31,7 @@ export default function Footer() {
                 aria-label={label}
                 className="inline-flex items-center justify-center bg-secondary hover:bg-secondary-hover rounded-full w-10 h-10 transition-colors flex-shrink-0"
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={iconSrc} alt="" style={{ width: '1.25em', height: '1.25em', filter: 'brightness(0) invert(1)' }} />
               </a>
             ))}

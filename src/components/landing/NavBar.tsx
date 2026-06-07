@@ -44,7 +44,7 @@ export default function NavBar() {
         <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-primary to-transparent z-10" />
       )}
       <div ref={scrollRef} onScroll={update} className="overflow-x-auto scrollbar-hide">
-        <div className="flex justify-center min-w-full">
+        <div className="flex md:justify-center min-w-full">
           <ul className="flex items-center gap-x-6 px-6 py-2 text-sm">
             {navLinks.map(({ label, href }) => (
               <li key={href} className="flex-shrink-0">
