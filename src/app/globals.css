@@ -10,7 +10,7 @@
 :root {
   /* Primary brand — header, footer, headings */
   --primary:           #57217A;
-  --primary-dark:      #3b0764;  /* hover on primary surfaces */
+  --primary-dark:      #24112F;  /* hover on primary surfaces */
   --primary-border:    #6b21a8;  /* borders on primary backgrounds */
 
   /* Accent — buttons, CTAs */
