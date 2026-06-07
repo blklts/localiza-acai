@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { FaFont, FaAdjust, FaMinus, FaPlus } from 'react-icons/fa';
+import { FaFont, FaAdjust, FaMinus, FaPlus, FaMoon, FaQuestionCircle } from 'react-icons/fa';
 
 export default function AccessibilityMenu() {
   const [open, setOpen] = useState(false);
@@ -46,6 +46,15 @@ export default function AccessibilityMenu() {
           <button className="flex items-center gap-2 w-full px-4 py-2 hover:bg-amber-600 transition-colors text-left">
             <FaAdjust />
             Modo Daltônico
+          </button>
+          <button className="flex items-center gap-2 w-full px-4 py-2 hover:bg-amber-600 transition-colors text-left">
+            <FaMoon />
+            Modo Noturno
+          </button>
+          <hr className="my-1 border-amber-500" />
+          <button className="flex items-center gap-2 w-full px-4 py-2 hover:bg-amber-600 transition-colors text-left">
+            <FaQuestionCircle />
+            Ajuda
           </button>
         </div>
       )}
