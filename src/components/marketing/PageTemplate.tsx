@@ -16,7 +16,7 @@ export default function PageTemplate({
   return (
     <>
       {/* Hero row */}
-      <section className="relative h-[180px] md:h-[430px] overflow-hidden bg-primary flex-shrink-0 -mt-5">
+      <section className="relative h-[180px] md:h-[430px] overflow-hidden bg-primary flex-shrink-0 mx-4 rounded-[20px] md:mx-0 md:rounded-none md:-mt-5">
         {heroBg && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
