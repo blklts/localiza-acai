@@ -43,10 +43,9 @@ export default function AccessibilityMenu() {
             </button>
           </div>
           <hr className="my-1 border-amber-500" />
-          <p className="px-4 py-1 text-xs font-semibold text-amber-200 uppercase tracking-wide">Contraste</p>
           <button className="flex items-center gap-2 w-full px-4 py-2 hover:bg-amber-600 transition-colors text-left">
             <FaAdjust />
-            Alto contraste
+            Modo Daltônico
           </button>
         </div>
       )}
