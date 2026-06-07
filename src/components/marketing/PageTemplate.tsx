@@ -1,5 +1,6 @@
 interface PageTemplateProps {
   title: string;
+  titleClassName?: string;
   heroBg?: string;
   leftCurve?: string;
   rightCurve?: string;
@@ -8,6 +9,7 @@ interface PageTemplateProps {
 
 export default function PageTemplate({
   title,
+  titleClassName,
   heroBg,
   leftCurve,
   rightCurve,
@@ -22,26 +24,28 @@ export default function PageTemplate({
           <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
         )}
         <div className="relative z-10 h-full flex items-center px-6 md:px-16">
-          <h1 className="font-sans font-bold text-[36px] md:text-[128px] md:leading-[95%] tracking-normal text-center text-white w-full">{title}</h1>
+          <h1 className={`font-sans font-bold md:text-[128px] md:leading-[95%] tracking-normal text-center text-white w-full ${titleClassName ?? 'text-[36px]'}`}>{title}</h1>
         </div>
       </section>
 
       {/* Content row — left curve | children | right curve */}
-      <section className="flex items-stretch flex-1 bg-[#f5f5f5]">
-        {leftCurve && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={leftCurve} alt="" className="hidden md:block flex-shrink-0 w-auto max-h-[600px] self-start pointer-events-none" />
-        )}
+      {children && (
+        <section className="flex items-stretch flex-1 bg-[#f5f5f5]">
+          {leftCurve && (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={leftCurve} alt="" className="hidden md:block flex-shrink-0 w-auto max-h-[600px] self-start pointer-events-none" />
+          )}
 
-        <div className="flex-1 flex items-center gap-12 p-6 md:pl-12 md:py-16">
-          {children}
-        </div>
+          <div className="flex-1 flex items-center gap-12 p-6 md:pl-12 md:py-16">
+            {children}
+          </div>
 
-        {rightCurve && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={rightCurve} alt="" className="hidden md:block flex-shrink-0 w-auto max-h-[600px] self-start pointer-events-none" />
-        )}
-      </section>
+          {rightCurve && (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img src={rightCurve} alt="" className="hidden md:block flex-shrink-0 w-auto max-h-[600px] self-start pointer-events-none" />
+          )}
+        </section>
+      )}
     </>
   );
 }
