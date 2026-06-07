@@ -10,7 +10,8 @@ export default function HeroSection() {
       </div>
 
       {/* Mobile: solid primary covers the carousel */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-primary md:hidden" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-primary-dark md:hidden" />
+
 
       {/* Desktop: directional gradient from background to transparent */}
       <div

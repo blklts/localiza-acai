@@ -31,7 +31,7 @@ export default function AccessibilityMenu() {
       </button>
 
       {open && (
-        <div className="absolute left-0 right-0 bg-amber-700 text-white rounded-b-[20px] py-2 z-50 text-sm">
+        <div className="absolute right-0 min-w-[200px] bg-amber-700 text-white rounded-bl-[20px] rounded-br-[20px] rounded-tl-[20px] py-2 z-50 text-sm">
           <p className="px-4 py-1 text-xs font-semibold text-amber-200 uppercase tracking-wide">Tamanho do texto</p>
           <div className="flex items-center gap-2 px-4 py-2">
             <button className="flex items-center justify-center w-8 h-8 rounded border border-amber-500 hover:bg-amber-600 transition-colors" aria-label="Diminuir fonte">
