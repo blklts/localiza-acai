@@ -5,8 +5,8 @@ export const metadata = { title: 'Como funciona o selo — Localiza Açaí' };
 export default function Selo() {
   return (
     <PageTemplate
-      title="Saiba como funciona o selo"
-      heroBg="/carousel/3.webp"
+      title="Como funciona o selo?"
+      heroBg="/elements/decoration/selo/header.webp"
       leftCurve="/elements/decoration/selo/1.svg"
       rightCurve="/elements/decoration/selo/2.svg"
     >
