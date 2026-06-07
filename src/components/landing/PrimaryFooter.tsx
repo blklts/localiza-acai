@@ -7,7 +7,7 @@ const contactLinks = [
 export default function PrimaryFooter() {
   return (
     <footer className="bg-primary text-[#f5f5f5]">
-      <div className="grid grid-cols-2 gap-6 px-[100px] py-6 w-full">
+      <div className="flex flex-col gap-4 px-6 py-5 md:grid md:grid-cols-2 md:gap-6 md:px-[100px] md:py-6 w-full">
         <div className="flex flex-col gap-1 text-sm text-[#f5f5f5]">
           <p>Copyright © 2026 LocalizAçaí Projeto acadêmico. Universidade do Estado do Pará - UEPA</p>
           <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5">
@@ -21,7 +21,7 @@ export default function PrimaryFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-2 justify-center">
+        <div className="flex flex-col items-start md:items-end gap-2 md:justify-center">
           <span className="text-xs font-semibold uppercase tracking-wider opacity-70">Entre em contato</span>
           <div className="flex gap-2">
             {contactLinks.map(({ iconSrc, label, href }) => (
