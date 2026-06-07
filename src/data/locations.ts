@@ -17,6 +17,7 @@ export interface AcaiLocation {
   menu?: MenuItem[];
   lat: number;
   lng: number;
+  instagram?: string;
 }
 
 export const locations: AcaiLocation[] = [

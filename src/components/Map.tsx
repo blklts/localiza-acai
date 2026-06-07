@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useState, useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip, ZoomControl } from 'react-leaflet';
-import { locations, AcaiLocation, MenuItem } from '@/data/locations';
+import type { AcaiLocation, MenuItem } from '@/data/locations';
 import { FaSearch, FaReply } from 'react-icons/fa';
 import Link from 'next/link';
 import { useMobile } from '@/hooks/useMobile';
@@ -49,13 +49,14 @@ function Stars({ count }: { count: number }) {
 }
 
 export interface MapProps {
+  locations: AcaiLocation[];
   q?: string;
   sort?: string;
   minStars?: number;
   maxDistance?: number;
 }
 
-export default function MapComponent({ q, sort, minStars, maxDistance }: MapProps) {
+export default function MapComponent({ locations, q, sort, minStars, maxDistance }: MapProps) {
   const isMobile = useMobile();
   const [selected, setSelected] = useState<AcaiLocation | null>(null);
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
@@ -98,7 +99,7 @@ export default function MapComponent({ q, sort, minStars, maxDistance }: MapProp
       result = [...result].sort((a, b) => parsePriceMin(a.price) - parsePriceMin(b.price));
     }
     return result;
-  }, [filterQuery, filterStars, filterPriceMax, filterDistance, userCoords, sort]);
+  }, [locations, filterQuery, filterStars, filterPriceMax, filterDistance, userCoords, sort]);
 
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
@@ -148,26 +149,42 @@ export default function MapComponent({ q, sort, minStars, maxDistance }: MapProp
 
               {/* Info rows */}
               <div className="flex flex-col gap-2 text-sm text-gray-700">
-                <p className="flex gap-2">
-                  <span>📍</span>
-                  <span>{selected.address}</span>
-                </p>
-                <p className="flex gap-2">
-                  <span>📞</span>
-                  <span>{selected.phone}</span>
-                </p>
-                <p className="flex gap-2">
-                  <span>🕐</span>
-                  <span>{selected.hours}</span>
-                </p>
-                <p className="flex gap-2">
-                  <span>💰</span>
-                  <span>{selected.price}</span>
-                </p>
+                {selected.address && (
+                  <p className="flex gap-2">
+                    <span>📍</span>
+                    <span>{selected.address}</span>
+                  </p>
+                )}
+                {selected.phone && (
+                  <p className="flex gap-2">
+                    <span>📞</span>
+                    <span>{selected.phone}</span>
+                  </p>
+                )}
+                {selected.hours && (
+                  <p className="flex gap-2">
+                    <span>🕐</span>
+                    <span>{selected.hours}</span>
+                  </p>
+                )}
+                {selected.price && (
+                  <p className="flex gap-2">
+                    <span>💰</span>
+                    <span>{selected.price}</span>
+                  </p>
+                )}
                 {distance && (
                   <p className="flex gap-2">
                     <span>📏</span>
                     <span>{distance} de você</span>
+                  </p>
+                )}
+                {selected.instagram && (
+                  <p className="flex gap-2">
+                    <span>📱</span>
+                    <a href={selected.instagram} target="_blank" rel="noopener noreferrer" className="text-purple-600 underline break-all">
+                      Instagram
+                    </a>
                   </p>
                 )}
               </div>
