@@ -9,7 +9,7 @@ export default function HeroText() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-[40px] font-bold text-white md:text-primary font-sans leading-tight">
+      <h1 className="text-[32px] md:text-[40px] font-bold text-white md:text-primary font-sans leading-tight">
         Encontre um ponto de<br /><span className="text-[#40AC8E]">açaí seguro</span> perto de você
       </h1>
 
