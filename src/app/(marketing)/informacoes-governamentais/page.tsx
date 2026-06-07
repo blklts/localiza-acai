@@ -76,7 +76,7 @@ export default function InformacoesGovernamentais() {
         >
           {/* links card */}
           <div
-            className="absolute top-[calc(50%-20px)] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] bg-white rounded-[20px] px-6 pt-5 pb-[80px] flex flex-col gap-3 shadow-md"
+            className="absolute top-[calc(50%+20px)] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] bg-white rounded-[20px] px-6 pt-5 pb-[80px] flex flex-col gap-3 shadow-md"
             style={{ zIndex: 1 }}
           >
             {links.map(({ label, href }) => (
