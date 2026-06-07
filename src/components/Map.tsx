@@ -271,7 +271,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
             <div className="flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
 
         {/* Search */}
-        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+        <div className={`inline-flex items-center gap-2 text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap ${filterQuery ? 'bg-accent' : 'bg-secondary'}`}>
           <FaSearch className="flex-shrink-0 text-sm" />
           <input
             type="text"
@@ -283,7 +283,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
         </div>
 
         {/* Price */}
-        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+        <div className={`inline-flex items-center gap-2 text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap ${filterPriceMax < 50 ? 'bg-accent' : 'bg-secondary'}`}>
           <img src="/icons/dinheirus.svg" alt="" style={{ width: '1em', height: '1em', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
           <input
             type="range"
@@ -300,7 +300,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
         </div>
 
         {/* Distance */}
-        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+        <div className={`inline-flex items-center gap-2 text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap ${filterDistance !== null ? 'bg-accent' : 'bg-secondary'}`}>
           <img src="/icons/geolocalização.svg" alt="" style={{ width: '1em', height: '1em', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
           <select
             className="bg-transparent outline-none cursor-pointer text-sm font-semibold text-white"
@@ -315,7 +315,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
         </div>
 
         {/* Stars */}
-        <div className="inline-flex items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap">
+        <div className={`inline-flex items-center gap-2 text-white font-semibold rounded-lg px-4 py-2 whitespace-nowrap ${filterStars !== null ? 'bg-accent' : 'bg-secondary'}`}>
           <img src="/icons/estrela 1.svg" alt="" style={{ width: '1em', height: '1em', filter: 'brightness(0) invert(1)', flexShrink: 0 }} />
           <select
             className="bg-transparent outline-none cursor-pointer text-sm font-semibold text-white"
