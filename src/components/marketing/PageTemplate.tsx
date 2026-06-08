@@ -4,6 +4,7 @@ interface PageTemplateProps {
   heroBg?: string;
   leftCurve?: string;
   rightCurve?: string;
+  curvesAlign?: 'start' | 'end';
   children?: React.ReactNode;
 }
 
@@ -13,8 +14,14 @@ export default function PageTemplate({
   heroBg,
   leftCurve,
   rightCurve,
+  curvesAlign = 'start',
   children,
 }: PageTemplateProps) {
+  const curveClass =
+    curvesAlign === 'end'
+      ? 'self-end max-h-[calc(100%-3rem)] max-w-[200px]'
+      : 'self-start max-h-[600px]';
+
   return (
     <>
       {/* Hero row */}
@@ -33,7 +40,7 @@ export default function PageTemplate({
         <section className="flex items-stretch flex-1 bg-[#f5f5f5]">
           {leftCurve && (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={leftCurve} alt="" className="hidden md:block flex-shrink-0 w-auto max-h-[600px] self-start pointer-events-none" />
+            <img src={leftCurve} alt="" className={`hidden md:block flex-shrink-0 w-auto pointer-events-none ${curveClass}`} />
           )}
 
           <div className="flex-1 flex items-center gap-12 p-6 md:pl-12 md:py-16">
@@ -42,7 +49,7 @@ export default function PageTemplate({
 
           {rightCurve && (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={rightCurve} alt="" className="hidden md:block flex-shrink-0 w-auto max-h-[600px] self-start pointer-events-none" />
+            <img src={rightCurve} alt="" className={`hidden md:block flex-shrink-0 w-auto pointer-events-none ${curveClass}`} />
           )}
         </section>
       )}
