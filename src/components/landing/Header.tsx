@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 
 export default function Header() {
   return (
-    <header className="relative z-10 bg-primary text-white md:rounded-b-[20px] pl-[18px] pr-[18px]">
+    <header className="relative z-50 bg-primary text-white md:rounded-b-[20px] pl-[18px] pr-[18px]">
       <div className="grid grid-cols-3 items-center px-8 py-2">
         <div className="flex justify-start">
           <Link href="#" className="flex items-center gap-2 text-sm hover:text-purple-200 transition-colors">
