@@ -25,9 +25,9 @@ export default function HeroSection() {
         <img
           src="/elements/decoration/main/side_curve.svg"
           alt=""
-          className="relative z-40 self-stretch w-auto pointer-events-none flex-shrink-0 max-h-[70vh] hidden md:block"
+          className="relative z-40 self-stretch w-auto pointer-events-none flex-shrink-0 max-h-[50vh] hidden md:block"
         />
-        <div className="relative z-20 flex flex-col justify-start px-8 pt-12 pb-24 w-full max-w-3xl">
+        <div className="relative z-20 flex flex-col justify-start px-8 pt-12 pb-24 flex-1 max-w-3xl">
           <HeroText />
         </div>
       </div>

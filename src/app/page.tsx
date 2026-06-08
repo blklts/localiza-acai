@@ -12,10 +12,12 @@ export default function Home() {
         <img
           src="/elements/decoration/footer.png"
           alt=""
-          className="absolute bottom-0 left-0 w-full h-auto block pointer-events-none"
+          className="absolute bottom-[-50px] left-0 w-full h-auto block pointer-events-none"
         />
       </div>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function AcaiDoPara() {
       rightCurveClassName="items-start basis-[440px]"
       contentClassName="flex-1 flex items-center gap-12 py-6 md:py-16"
     >
-      <div className="w-full flex flex-col gap-8 md:gap-[60px] self-center">
+      <div className="w-full flex flex-col gap-8 md:gap-[60px] self-center mx-[20px] md:mx-0">
           <p className="text-zinc-500 text-base md:text-lg">O açaí é um dos principais produtos da sociobiodiversidade amazônica e possui grande relevância econômica, cultural e alimentar no estado do Pará. A produção paraense ocorre principalmente em dois tipos de ambientes: as áreas de várzea e as áreas de terra firme, cada uma apresentando características específicas de cultivo, manejo e produtividade.</p>
           <p className="text-zinc-500 text-base md:text-lg">Segundo a Empresa Brasileira de Pesquisa Agropecuária, as maiores concentrações naturais de açaizeiros encontram-se nas áreas de várzea do estuário amazônico, especialmente nos estados do Pará e Amapá, embora o cultivo em terra firme tenha se expandido significativamente nas últimas décadas.</p>
           <h2 className="text-primary font-bold text-xl md:text-2xl">Mas você sabe o que é açaí de várzea?</h2>

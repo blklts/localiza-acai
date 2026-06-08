@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#997aaf] text-[#f5f5f5]">
       <div className="flex flex-col gap-4 px-6 pb-4 md:grid md:grid-cols-2 md:gap-6 md:px-[100px] w-full">
-        <div className="flex flex-col gap-1 text-sm text-[#f5f5f5]">
+        <div className="flex flex-col gap-1 text-xs text-[#f5f5f5] justify-end">
           <p>Copyright © 2026 LocalizAçaí Projeto acadêmico. Universidade do Estado do Pará - UEPA</p>
           <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5">
             <a href="#" className="hover:underline whitespace-nowrap">Política de Privacidade</a>
@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start gap-2 md:items-end md:justify-center">
+        <div className="flex flex-col items-end justify-start gap-2">
           <span className="text-xs font-semibold uppercase tracking-wider opacity-70">Entre em contato</span>
           <div className="flex gap-2">
             {contactLinks.map(({ iconSrc, label, href }) => (

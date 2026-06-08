@@ -45,7 +45,7 @@ export default function SearchButton({ open, setOpen }: SearchButtonProps) {
      * Desktop: flex-row-reverse → icon (left) + collapsible input (right)
      */
     <div
-      className="flex md:flex-row-reverse w-full md:w-auto items-center gap-2 bg-secondary text-white font-semibold rounded-lg px-4 py-3 hover:bg-secondary-hover cursor-pointer"
+      className="flex md:flex-row-reverse w-full md:w-auto items-center gap-2 bg-secondary text-white font-semibold rounded-[24px] px-4 py-3 hover:bg-secondary-hover cursor-pointer"
       onClick={handleIconClick}
     >
       <input

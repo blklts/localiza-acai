@@ -21,11 +21,8 @@ export default function HeroText() {
       </div>
 
       <div className="flex flex-col gap-3">
-        <p className="font-sans font-normal text-[18px] leading-snug tracking-normal text-white/80 md:text-zinc-600">
-          Localize o ponto de venda mais próximo de você em Belém e Região Metropolitana.
-        </p>
-        <p className="font-sans font-normal text-[18px] leading-snug tracking-normal text-white/80 md:text-zinc-600">
-          Aqui tu tem uma experiencia personalizada, podendo escolher a melhor maneira de encontrar um produto de qualidade assegurada pelo selo governamental de maneira rápida simples e de acordo com tuas preferências.
+        <p className="font-sans font-normal text-[16px] leading-snug tracking-normal text-white/80 md:text-zinc-600">
+            Localize o ponto de venda mais próximo de você em Belém e Região Metropolitana. Aqui tu tem uma experiencia personalizada, podendo escolher a melhor maneira de encontrar um produto de qualidade assegurada pelo selo governamental de maneira rápida simples e de acordo com tuas preferências.
         </p>
       </div>
     </div>
