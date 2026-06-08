@@ -56,7 +56,7 @@ export default function JunteSeANosForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full max-w-sm">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
       {/* CNPJ */}
       <div>
         <label htmlFor="cnpj" className={labelClass}>CNPJ</label>

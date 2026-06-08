@@ -9,7 +9,8 @@ export default function JunteSeANos() {
       title="Junte-se a nós"
       heroBg="/carousel/1.webp"
     >
-      <div className="flex flex-col gap-8 w-full max-w-lg mx-auto">
+      <div className="flex items-stretch w-full">
+      <div className="w-full md:w-2/3 md:flex-shrink-0 flex flex-col gap-8 self-center">
         <div className="flex flex-col gap-4">
           <p className="text-zinc-500 text-base md:text-lg">
               Se você já possui um estabelecimento certificado pela Casa do Açaí e deseja se juntar a nós, sinta-se bem vindo.
@@ -19,6 +20,7 @@ export default function JunteSeANos() {
           </p>
         </div>
         <JunteSeANosForm />
+      </div>
       </div>
     </PageTemplate>
   );
