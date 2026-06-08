@@ -27,7 +27,7 @@ export default function HeroSection() {
           alt=""
           className="relative z-40 self-stretch w-auto pointer-events-none flex-shrink-0 max-h-[70vh] hidden md:block"
         />
-        <div className="relative z-20 flex flex-col justify-start px-8 py-12 w-full max-w-3xl">
+        <div className="relative z-20 flex flex-col justify-start px-8 pt-12 pb-24 w-full max-w-3xl">
           <HeroText />
         </div>
       </div>
