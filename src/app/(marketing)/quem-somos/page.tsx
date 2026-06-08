@@ -1,4 +1,5 @@
 import PageTemplate from '@/components/marketing/PageTemplate';
+import DraggableScroll from '@/components/marketing/DraggableScroll';
 
 export const metadata = { title: 'Quem somos — Localiza Açaí' };
 
@@ -16,12 +17,14 @@ export default function QuemSomos() {
       <PageTemplate
         title="A equipe do LocalizAçaí"
         heroBg="/elements/decoration/quem_somos/header.png"
-        leftCurve="/elements/decoration/quem_somos/1.svg"
+        leftCurve="/elements/decoration/quem_somos/firula_com_homenzinho.webp"
+        leftCurveClassName="items-end basis-[220px]"
         rightCurve="/elements/decoration/quem_somos/firula_com_casinha.webp"
-        rightCurveClassName="self-start max-h-[560px] w-auto"
+        rightCurveClassName="items-start basis-[440px]"
+        contentClassName="flex-1 flex items-center gap-12 py-6 md:py-16"
       >
-        <div className="flex justify-center items-stretch w-full">
-          <div className="w-full md:w-1/2 flex flex-col gap-8 md:gap-[60px] self-center mx-auto">
+        <div className="flex justify-evenly items-stretch w-full mx-[120px]">
+          <div className="w-full flex flex-col gap-8 md:gap-[60px] self-center text-left">
             <p className="text-zinc-500 text-base md:text-lg">Olá, somos a equipe do LocalizAçaí, um grupo de acadêmicos apaixonados por açaí, que encontrou em uma observação de campo a oportunidade de ajudar a população belenense e região através da democratização do acesso a informação, facilitando sua busca por um açaí de qualidade e devidamente manipulado, segundo as normas estabelecidas pela vigilância sanitária.</p>
             <p className="text-zinc-500 text-base md:text-lg">Foi devido ao aumento de casos de Doença de Chagas no ano de 2026 que o grupo identificou que poderia criar uma forma contribuir com a população, utilizando de um sistema já existente que garante a segurança da produção do açaí, porém pouco conhecida.</p>
             <p className="text-zinc-500 text-base md:text-lg">Partindo desse principio, nossa missão era desenvolver uma maneira fácil de encontrar estabelecimentos de venda de açaí que estejam adequados segundo as normas da vigilância sanitária.</p>
@@ -33,29 +36,28 @@ export default function QuemSomos() {
       </PageTemplate>
 
       <div className="bg-[#f5f5f5]">
-        {/* Decorative figure: desktop only */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/elements/decoration/quem_somos/homenzinho.webp" alt="" className="hidden md:block h-72 w-auto ml-[80px]" />
-
-        <section className="bg-background py-10 md:py-16 relative mb-20">
+        <section className="bg-background py-[36px] relative mb-20">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-16 z-10 bg-gradient-to-r from-background to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:w-16 z-10 bg-gradient-to-l from-background to-transparent" />
-          <div className="overflow-x-auto scrollbar-hide w-full">
+          <DraggableScroll className="overflow-x-auto scrollbar-hide w-full">
             <div className="flex flex-nowrap gap-4 md:gap-6 px-6 md:px-16 w-max">
               {team.map((member, i) => (
-                <div key={i} className="bg-[#f5f5f5] rounded-xl p-5 md:p-6 flex flex-col gap-4 w-[280px] md:w-[400px] flex-shrink-0">
-                  <div>
-                    <h3 className="text-primary font-bold text-xl md:text-2xl leading-tight">{member.name}</h3>
-                    <p className="text-secondary font-bold text-sm mt-2">{member.role}</p>
+                <div key={i} className="bg-transparent rounded-xl p-5 md:p-6 flex flex-col gap-2 w-[280px] md:w-[400px] flex-shrink-0">
+                  <div className="flex gap-2">
+                    <span className="text-4xl md:text-5xl leading-none flex-shrink-0 invisible">&ldquo;</span>
+                    <div>
+                      <h3 className="text-primary font-sans font-bold text-[40px] leading-[42px]">{member.name}</h3>
+                      <p className="text-secondary font-sans font-bold text-[16px] leading-none mt-2">{member.role}</p>
+                    </div>
                   </div>
                   <div className="flex gap-2 items-start">
-                    <span className="text-primary text-4xl md:text-5xl leading-none select-none">&ldquo;</span>
-                    <p className="text-zinc-700 text-sm">{member.quote}</p>
+                    <span className="text-primary text-4xl md:text-5xl leading-none select-none flex-shrink-0">&ldquo;</span>
+                    <p className="text-zinc-700 font-sans font-normal text-[16px] leading-none">{member.quote}</p>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </DraggableScroll>
         </section>
       </div>
     </>

@@ -12,6 +12,7 @@ export default function Selo() {
         <PageTemplate
           title="Como funciona o selo?"
           heroBg="/elements/decoration/selo/header.webp"
+
         >
           <div className="flex flex-col gap-8 w-full">
             <p className="text-zinc-500 text-base">O selo Açaí Bom é um indicativo de biosegurança que é dado aos estabelecimentos que estejam de acordo com as normas de vigilância e atendem ao Decreto Estadual 326/2012, na capital belenense.</p>
@@ -36,8 +37,9 @@ export default function Selo() {
           title="Como funciona o selo?"
           heroBg="/elements/decoration/selo/header.webp"
           leftCurve="/elements/decoration/selo/selo%201.webp"
+          leftCurveClassName="items-end basis-[280px]"
           rightCurve="/elements/decoration/selo/selo%202.webp"
-          curvesAlign="end"
+          rightCurveClassName="items-end basis-[440px]"
         >
           <div className="flex-1 flex flex-col gap-[60px] self-center">
             <p className="text-zinc-500 text-lg">O selo Açaí Bom é um indicativo de biosegurança que é dado aos estabelecimentos que estejam de acordo com as normas de vigilância e atendem ao Decreto Estadual 326/2012, na capital belenense.</p>
