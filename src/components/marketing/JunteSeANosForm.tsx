@@ -28,7 +28,7 @@ function validateCNPJ(cnpj: string): boolean {
 
 const inputClass =
   'w-full mt-1 px-4 py-2 md:py-3 rounded-xl border border-accent-light bg-white text-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow';
-const labelClass = 'block text-sm font-medium text-zinc-600';
+const labelClass = 'block font-sans font-normal text-[20px] leading-none text-zinc-600';
 
 export default function JunteSeANosForm() {
   const [cnpj, setCnpj] = useState('');
@@ -56,9 +56,9 @@ export default function JunteSeANosForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-6 w-full min-w-0">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-6 w-full max-w-200 min-w-0 mx-auto">
       {/* CNPJ */}
-      <div>
+      <div className="min-w-0">
         <label htmlFor="cnpj" className={labelClass}>CNPJ</label>
         <input
           id="cnpj"
@@ -74,7 +74,7 @@ export default function JunteSeANosForm() {
       </div>
 
       {/* Nome do estabelecimento */}
-      <div>
+      <div className="min-w-0">
         <label htmlFor="nome" className={labelClass}>Nome do estabelecimento</label>
         <input
           id="nome"
@@ -87,15 +87,15 @@ export default function JunteSeANosForm() {
       </div>
 
       {/* Anexar documento */}
-      <div>
+      <div className="min-w-0">
         <span className={labelClass}>Anexar documento</span>
         <label
           htmlFor="documento"
-          className="mt-1 flex items-center gap-3 px-4 py-2 md:py-3 rounded-xl border border-accent-light bg-white cursor-pointer hover:bg-zinc-50 transition-colors"
+          className="mt-1 flex items-center gap-3 px-4 py-2 md:py-3 rounded-xl border border-accent-light bg-white cursor-pointer hover:bg-zinc-50 transition-colors min-w-0 overflow-hidden"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/icons/adicionarimagem.svg" alt="" className="w-5 h-5 flex-shrink-0" style={{ filter: 'brightness(0)' }} />
-          <span className="text-sm text-zinc-400 flex-1 truncate">
+          <span className="text-sm text-zinc-400 w-0 flex-1 truncate">
             {arquivo ? arquivo.name : 'Anexe sua comprovação de certificação'}
           </span>
           <span className="text-xs font-medium text-primary bg-primary-tint px-3 py-1 rounded-lg flex-shrink-0">

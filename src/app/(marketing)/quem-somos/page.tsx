@@ -41,7 +41,7 @@ export default function QuemSomos() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/elements/decoration/quem_somos/homenzinho.webp" alt="" className="hidden md:block h-72 w-auto ml-[80px]" />
 
-        <section className="bg-background py-10 md:py-16 relative">
+        <section className="bg-background py-10 md:py-16 relative mb-20">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-16 z-10 bg-gradient-to-r from-background to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:w-16 z-10 bg-gradient-to-l from-background to-transparent" />
           <div className="overflow-x-auto scrollbar-hide w-full">
