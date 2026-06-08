@@ -17,10 +17,11 @@ export default function QuemSomos() {
         title="A equipe do LocalizAçaí"
         heroBg="/elements/decoration/quem_somos/header.png"
         leftCurve="/elements/decoration/quem_somos/1.svg"
-        rightCurve="/elements/decoration/quem_somos/2.svg"
+        rightCurve="/elements/decoration/quem_somos/firula_com_casinha.webp"
+        rightCurveClassName="self-start max-h-[560px] w-auto"
       >
-        <div className="flex items-stretch w-full">
-          <div className="w-full md:w-2/3 md:flex-shrink-0 flex flex-col gap-8 md:gap-[60px] self-center">
+        <div className="flex justify-center items-stretch w-full">
+          <div className="w-full md:w-1/2 flex flex-col gap-8 md:gap-[60px] self-center mx-auto">
             <p className="text-zinc-500 text-base md:text-lg">Olá, somos a equipe do LocalizAçaí, um grupo de acadêmicos apaixonados por açaí, que encontrou em uma observação de campo a oportunidade de ajudar a população belenense e região através da democratização do acesso a informação, facilitando sua busca por um açaí de qualidade e devidamente manipulado, segundo as normas estabelecidas pela vigilância sanitária.</p>
             <p className="text-zinc-500 text-base md:text-lg">Foi devido ao aumento de casos de Doença de Chagas no ano de 2026 que o grupo identificou que poderia criar uma forma contribuir com a população, utilizando de um sistema já existente que garante a segurança da produção do açaí, porém pouco conhecida.</p>
             <p className="text-zinc-500 text-base md:text-lg">Partindo desse principio, nossa missão era desenvolver uma maneira fácil de encontrar estabelecimentos de venda de açaí que estejam adequados segundo as normas da vigilância sanitária.</p>
@@ -28,11 +29,6 @@ export default function QuemSomos() {
             <p className="text-zinc-500 text-base md:text-lg">Através do nosso site, nós queremos fornecer para todo mundo que queira aproveitar um bom açaí seguro praticidade e confiança ao escolher onde irá comprar, para desfrutar suas boas refeições.</p>
             <p className="text-zinc-500 text-base md:text-lg">Este projeto foi idealizado por alunos da Universidade do Estado do Pará do curso de Bacharelado em Design, na disciplina de Projeto IV, a qual tem foco em design de interfaces, e aplicando suas particularidades projetuais para a concepção dessa interface a qual proporcionamos a experiência de acesso à informação de localização de pontos de açaí seguros.</p>
           </div>
-          {/* Side illustration: desktop only */}
-          <div
-            className="hidden md:block flex-1 scale-80 bg-contain bg-no-repeat bg-right-top mr-[20px] ml-auto"
-            style={{ backgroundImage: "url('/elements/decoration/quem_somos/casinha%202.webp')" }}
-          />
         </div>
       </PageTemplate>
 

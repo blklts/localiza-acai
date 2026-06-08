@@ -4,6 +4,7 @@ interface PageTemplateProps {
   heroBg?: string;
   leftCurve?: string;
   rightCurve?: string;
+  rightCurveClassName?: string;
   curvesAlign?: 'start' | 'end';
   children?: React.ReactNode;
 }
@@ -14,6 +15,7 @@ export default function PageTemplate({
   heroBg,
   leftCurve,
   rightCurve,
+  rightCurveClassName,
   curvesAlign = 'start',
   children,
 }: PageTemplateProps) {
@@ -49,7 +51,7 @@ export default function PageTemplate({
 
           {rightCurve && (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={rightCurve} alt="" className={`hidden md:block flex-shrink-0 w-auto pointer-events-none ${curveClass}`} />
+            <img src={rightCurve} alt="" className={`hidden md:block flex-shrink-0 w-auto pointer-events-none ${rightCurveClassName ?? curveClass}`} />
           )}
         </section>
       )}
