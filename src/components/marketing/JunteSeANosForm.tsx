@@ -112,7 +112,7 @@ export default function JunteSeANosForm() {
 
       <button
         type="submit"
-        className="self-start flex items-center gap-2 bg-secondary hover:bg-secondary-hover text-white font-semibold px-8 py-3 rounded-[20px] transition-colors"
+        className="w-full md:w-auto md:self-start flex items-center justify-center gap-2 bg-secondary hover:bg-secondary-hover text-white font-semibold px-8 py-3 rounded-[20px] transition-colors"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/compartilhar.svg" alt="" className="w-5 h-5" style={{ filter: 'brightness(0) invert(1)' }} />
