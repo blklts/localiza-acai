@@ -27,7 +27,7 @@ function validateCNPJ(cnpj: string): boolean {
 }
 
 const inputClass =
-  'w-full mt-1 px-4 py-3 rounded-xl border border-accent-light bg-white text-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow';
+  'w-full mt-1 px-4 py-2 md:py-3 rounded-xl border border-accent-light bg-white text-zinc-700 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow';
 const labelClass = 'block text-sm font-medium text-zinc-600';
 
 export default function JunteSeANosForm() {
@@ -56,7 +56,7 @@ export default function JunteSeANosForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-6 w-full">
       {/* CNPJ */}
       <div>
         <label htmlFor="cnpj" className={labelClass}>CNPJ</label>
@@ -91,7 +91,7 @@ export default function JunteSeANosForm() {
         <span className={labelClass}>Anexar documento</span>
         <label
           htmlFor="documento"
-          className="mt-1 flex items-center gap-3 px-4 py-3 rounded-xl border border-accent-light bg-white cursor-pointer hover:bg-zinc-50 transition-colors"
+          className="mt-1 flex items-center gap-3 px-4 py-2 md:py-3 rounded-xl border border-accent-light bg-white cursor-pointer hover:bg-zinc-50 transition-colors"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/icons/adicionarimagem.svg" alt="" className="w-5 h-5 flex-shrink-0" style={{ filter: 'brightness(0)' }} />
