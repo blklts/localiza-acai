@@ -25,7 +25,7 @@ export default function PageTemplate({
   return (
     <>
       {/* Hero row */}
-      <section className="relative h-[180px] md:h-[430px] overflow-hidden bg-primary flex-shrink-0 rounded-b-[20px] md:rounded-none md:-mt-5">
+      <section className="relative w-full h-[180px] md:h-[430px] overflow-hidden bg-primary flex-shrink-0 rounded-b-[20px] md:rounded-none md:-mt-5">
         {heroBg && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
@@ -37,7 +37,7 @@ export default function PageTemplate({
 
       {/* Content row — left curve | children | right curve */}
       {children && (
-        <section className="flex items-stretch flex-1 bg-[#f5f5f5]">
+        <section className="flex items-stretch flex-1 w-full bg-[#f5f5f5]">
           {leftCurve && (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img src={leftCurve} alt="" className={`hidden md:block flex-shrink-0 w-auto pointer-events-none ${curveClass}`} />
