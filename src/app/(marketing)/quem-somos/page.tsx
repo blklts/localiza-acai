@@ -11,30 +11,54 @@ const team = [
   { name: 'Caroline Buna', role: 'Designer Gráfico', quote: 'Esse projeto foi muito importante para o meu crescimento, tanto pessoal quanto acadêmico. Durante o desenvolvimento, precisei estudar mais, pesquisar, testar ideias e aprender coisas novas, o que contribuiu bastante para ampliar meus conhecimentos. Além disso, o processo me ajudou a evoluir na forma de pensar, criar e resolver problemas, agregando ainda mais para minha vida academica.' },
 ];
 
+const paragraphs = [
+  'Olá, somos a equipe do LocalizAçaí, um grupo de acadêmicos apaixonados por açaí, que encontrou em uma observação de campo a oportunidade de ajudar a população belenense e região através da democratização do acesso a informação, facilitando sua busca por um açaí de qualidade e devidamente manipulado, segundo as normas estabelecidas pela vigilância sanitária.',
+  'Foi devido ao aumento de casos de Doença de Chagas no ano de 2026 que o grupo identificou que poderia criar uma forma contribuir com a população, utilizando de um sistema já existente que garante a segurança da produção do açaí, porém pouco conhecida.',
+  'Partindo desse principio, nossa missão era desenvolver uma maneira fácil de encontrar estabelecimentos de venda de açaí que estejam adequados segundo as normas da vigilância sanitária.',
+  'E assim nasceu o Localiz Açaí! Seu site de localização de pontos de venda de açaí devidamente certificados pela Região Metropolitana de Belém.',
+  'Através do nosso site, nós queremos fornecer para todo mundo que queira aproveitar um bom açaí seguro praticidade e confiança ao escolher onde irá comprar, para desfrutar suas boas refeições.',
+  'Este projeto foi idealizado por alunos da Universidade do Estado do Pará do curso de Bacharelado em Design, na disciplina de Projeto IV, a qual tem foco em design de interfaces, e aplicando suas particularidades projetuais para a concepção dessa interface a qual proporcionamos a experiência de acesso à informação de localização de pontos de açaí seguros.',
+];
+
 export default function QuemSomos() {
   return (
     <>
-      <PageTemplate
-        title="A equipe do LocalizAçaí"
-        heroBg="/elements/decoration/quem_somos/header.png"
-        leftCurve="/elements/decoration/quem_somos/firula_com_homenzinho.webp"
-        leftCurveClassName="items-end basis-[220px]"
-        rightCurve="/elements/decoration/quem_somos/firula_com_casinha.webp"
-        rightCurveClassName="items-start basis-[440px]"
-        contentClassName="flex-1 flex items-center gap-12 py-6 md:py-16"
-      >
-        <div className="flex justify-evenly items-stretch w-full mx-[120px]">
-          <div className="w-full flex flex-col gap-8 md:gap-[60px] self-center text-left">
-            <p className="text-zinc-500 text-base md:text-lg">Olá, somos a equipe do LocalizAçaí, um grupo de acadêmicos apaixonados por açaí, que encontrou em uma observação de campo a oportunidade de ajudar a população belenense e região através da democratização do acesso a informação, facilitando sua busca por um açaí de qualidade e devidamente manipulado, segundo as normas estabelecidas pela vigilância sanitária.</p>
-            <p className="text-zinc-500 text-base md:text-lg">Foi devido ao aumento de casos de Doença de Chagas no ano de 2026 que o grupo identificou que poderia criar uma forma contribuir com a população, utilizando de um sistema já existente que garante a segurança da produção do açaí, porém pouco conhecida.</p>
-            <p className="text-zinc-500 text-base md:text-lg">Partindo desse principio, nossa missão era desenvolver uma maneira fácil de encontrar estabelecimentos de venda de açaí que estejam adequados segundo as normas da vigilância sanitária.</p>
-            <p className="text-zinc-500 text-base md:text-lg">E assim nasceu o Localiz Açaí! Seu site de localização de pontos de venda de açaí devidamente certificados pela Região Metropolitana de Belém.</p>
-            <p className="text-zinc-500 text-base md:text-lg">Através do nosso site, nós queremos fornecer para todo mundo que queira aproveitar um bom açaí seguro praticidade e confiança ao escolher onde irá comprar, para desfrutar suas boas refeições.</p>
-            <p className="text-zinc-500 text-base md:text-lg">Este projeto foi idealizado por alunos da Universidade do Estado do Pará do curso de Bacharelado em Design, na disciplina de Projeto IV, a qual tem foco em design de interfaces, e aplicando suas particularidades projetuais para a concepção dessa interface a qual proporcionamos a experiência de acesso à informação de localização de pontos de açaí seguros.</p>
+      {/* ── MOBILE (hidden on md+) ── */}
+      <div className="md:hidden">
+        <PageTemplate
+          title="A equipe do LocalizAçaí"
+          heroBg="/elements/decoration/quem_somos/header.png"
+        >
+          <div className="flex flex-col gap-6 p-4">
+            {paragraphs.map((text, i) => (
+              <p key={i} className="text-zinc-500 text-base">{text}</p>
+            ))}
           </div>
-        </div>
-      </PageTemplate>
+        </PageTemplate>
+      </div>
 
+      {/* ── DESKTOP (hidden below md) ── */}
+      <div className="hidden md:block">
+        <PageTemplate
+          title="A equipe do LocalizAçaí"
+          heroBg="/elements/decoration/quem_somos/header.png"
+          leftCurve="/elements/decoration/quem_somos/firula_com_homenzinho.webp"
+          leftCurveClassName="items-end basis-[220px]"
+          rightCurve="/elements/decoration/quem_somos/firula_com_casinha.webp"
+          rightCurveClassName="items-start basis-[440px]"
+          contentClassName="flex-1 flex items-center gap-12 py-16"
+        >
+          <div className="flex justify-evenly items-stretch w-full mx-[120px]">
+            <div className="w-full flex flex-col gap-[60px] self-center text-left">
+              {paragraphs.map((text, i) => (
+                <p key={i} className="text-zinc-500 text-lg">{text}</p>
+              ))}
+            </div>
+          </div>
+        </PageTemplate>
+      </div>
+
+      {/* ── Testimonials (shared) ── */}
       <div className="bg-[#f5f5f5]">
         <section className="bg-background py-[36px] relative mb-20">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-16 z-10 bg-gradient-to-r from-background to-transparent" />
