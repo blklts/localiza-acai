@@ -45,7 +45,7 @@ export default function SearchButton({ open, setOpen }: SearchButtonProps) {
      * Desktop: flex-row-reverse → icon (left) + collapsible input (right)
      */
     <div
-      className="flex md:flex-row-reverse w-full md:w-auto items-center gap-2 bg-secondary text-white font-semibold rounded-[24px] px-4 py-3 hover:bg-secondary-hover cursor-pointer"
+      className="flex md:flex-row-reverse w-auto items-center gap-2 bg-secondary text-white font-semibold rounded-[24px] px-4 py-3 hover:bg-secondary-hover cursor-pointer"
       onClick={handleIconClick}
     >
       <input
@@ -55,7 +55,7 @@ export default function SearchButton({ open, setOpen }: SearchButtonProps) {
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         placeholder="Pesquise um local"
-        className={`bg-transparent outline-none placeholder-white/60 transition-all duration-300 flex-1 min-w-0 md:flex-none ${
+        className={`bg-transparent outline-none placeholder-white/60 transition-all duration-300 flex-1 max-w-32 min-w-0 md:max-w-none md:flex-none ${
           open ? 'md:w-48 md:opacity-100' : 'md:w-0 md:opacity-0 md:pointer-events-none'
         }`}
       />

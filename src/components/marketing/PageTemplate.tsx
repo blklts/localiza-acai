@@ -31,7 +31,7 @@ export default function PageTemplate({
   return (
     <>
       {/* Hero row */}
-      <section className="relative w-full h-[180px] md:h-[430px] overflow-hidden bg-primary flex-shrink-0 rounded-b-[20px] md:rounded-none md:-mt-5">
+      <section className="relative w-full h-[180px] md:h-[430px] overflow-hidden bg-primary flex-shrink-0 rounded-b-[20px] md:-mt-5">
         {heroBg && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />

@@ -7,7 +7,7 @@ const contactLinks = [
 export default function Footer() {
   return (
     <footer className="bg-footer-bg text-footer-text">
-      <div className="flex flex-col gap-4 px-6 pb-4 md:grid md:grid-cols-2 md:gap-6 md:px-[100px] w-full">
+      <div className="flex flex-col gap-4 px-6 pt-5 pb-4 md:grid md:grid-cols-2 md:gap-6 md:px-[100px] w-full">
         <div className="flex flex-col gap-1 text-xs text-footer-text justify-end">
           <p>Copyright © 2026 LocalizAçaí Projeto acadêmico. Universidade do Estado do Pará - UEPA</p>
           <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5">
@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-end justify-start gap-2">
+        <div className="flex flex-col items-start md:items-end justify-start gap-2">
           <span className="text-xs font-semibold uppercase tracking-wider opacity-70">Entre em contato</span>
           <div className="flex gap-2">
             {contactLinks.map(({ iconSrc, label, href }) => (

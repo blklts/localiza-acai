@@ -21,7 +21,7 @@ export default function PrimaryFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col items-end justify-start gap-2">
+        <div className="flex flex-col items-start md:items-end justify-start gap-2">
           <span className="text-xs font-semibold uppercase tracking-wider opacity-70">Entre em contato</span>
           <div className="flex gap-2">
             {contactLinks.map(({ iconSrc, label, href }) => (

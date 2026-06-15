@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 import SignInModal from './SignInModal';
 import { auth, signIn, signOut } from '@/auth';
 
-export default async function Header() {
+export default async function Header({ flatDesktop = false }: { flatDesktop?: boolean }) {
   const session = await auth();
 
   async function handleSignIn() {
@@ -19,7 +19,7 @@ export default async function Header() {
   }
 
   return (
-    <header className="relative z-50 bg-primary text-white md:rounded-b-[20px] pl-[18px] pr-[18px]">
+    <header className={`relative z-50 bg-primary text-white pl-[18px] pr-[18px] ${flatDesktop ? '' : 'rounded-b-[20px]'}`}>
       <div className="grid grid-cols-3 items-center px-8 py-2">
         <div className="flex justify-start">
           <SignInModal user={session?.user} onSignIn={handleSignIn} onSignOut={handleSignOut} />
