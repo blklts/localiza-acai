@@ -8,47 +8,122 @@
  * ────────────────────────────────────────────────────────────────────────────
  */
 :root {
-  /* Primary brand — header, footer, headings */
+  /* Primary brand */
   --primary:           #57217A;
-  --primary-dark:      #24112F;  /* hover on primary surfaces */
-  --primary-border:    #6b21a8;  /* borders on primary backgrounds */
+  --primary-dark:      #24112F;
+  --primary-tint:      #faf5ff;
 
-  /* Accent — buttons, CTAs */
+  /* Accent */
   --accent:            #43AB8D;
+  --accent-light:      #a855f7;
 
-  /* Lighter brand tones */
-  --accent-light:      #a855f7;  /* icons, subtle highlights */
-  --on-primary:        #e9d5ff;  /* text / icons sitting on primary bg */
+  /* On-primary (text/icons on primary backgrounds) */
+  --on-primary:        #e9d5ff;
   --on-primary-hover:  #c084fc;
-  --primary-tint:      #faf5ff;  /* very light background tint */
 
-  /* Secondary — hero buttons, highlights */
+  /* Secondary */
   --secondary:         #DB6006;
   --secondary-hover:   #c05504;
 
-  /* Page */
+  /* Page backgrounds */
   --background:        #ECE1D7;
-    --background-2:   #F5F5F5;
+  --hero-title:        #ECE1D7;
+  --background-2:      #F5F5F5;
+  --background-dark:   #24112F;
   --surface:           #ffffff;
+  --surface-alt:       #f9fafb;
+
+  /* Footer */
+  --footer-bg:         #997aaf;
+  --footer-text:       #F5F5F5;
+
+  /* Text scale */
   --foreground:        #171717;
+  --strong:            #1f2937;
+  --medium:            #374151;
+  --label:             #4b5563;
   --muted:             #71717a;
+  --subtle:            #9ca3af;
+
+  /* Borders */
+  --border:            #d1d5db;
+  --border-subtle:     #e5e7eb;
+
+  /* Status */
+  --error:             #ef4444;
+  --error-border:      #f87171;
+  --success:           #16a34a;
+
+  /* UI accents */
+  --star:              #facc15;
+  --price:             #ea580c;
+
+  /* Accessibility menu (amber palette) */
+  --a11y-bg:           #b45309;
+  --a11y-hover:        #d97706;
+  --a11y-border:       #f59e0b;
+  --a11y-label:        #fde68a;
 }
+
+html.dark {
+  --background:    #24112F;
+  --background-2:  #1c1c27;
+  --surface:       #1e1e2e;
+  --surface-alt:   #252535;
+  --foreground:    #F5F5F5;
+  --strong:        #d0d0e4;
+  --medium:        #b8b8cc;
+  --label:         #F5F5F5;
+  --muted:         #F5F5F5;
+  --subtle:        #6b6b7f;
+  --border:        #2e2e3f;
+  --border-subtle: #262636;
+  --footer-bg:     #997aaf;
+    --hero-title:        #ECE1D7;
+}
+
+html.daltonism body {
+  filter: url(#daltonism-filter);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant daltonism (&:where(.daltonism, .daltonism *));
 
 @theme inline {
   --color-primary:           var(--primary);
   --color-primary-dark:      var(--primary-dark);
-  --color-primary-border:    var(--primary-border);
+  --color-primary-tint:      var(--primary-tint);
   --color-accent:            var(--accent);
   --color-accent-light:      var(--accent-light);
   --color-on-primary:        var(--on-primary);
   --color-on-primary-hover:  var(--on-primary-hover);
-  --color-primary-tint:      var(--primary-tint);
   --color-secondary:         var(--secondary);
   --color-secondary-hover:   var(--secondary-hover);
   --color-background:        var(--background);
+  --color-hero-title:        var(--hero-title);
+  --color-background-2:      var(--background-2);
+  --color-background-dark:   var(--background-dark);
   --color-surface:           var(--surface);
+  --color-surface-alt:       var(--surface-alt);
+  --color-footer-bg:         var(--footer-bg);
+  --color-footer-text:       var(--footer-text);
   --color-foreground:        var(--foreground);
+  --color-strong:            var(--strong);
+  --color-medium:            var(--medium);
+  --color-label:             var(--label);
   --color-muted:             var(--muted);
+  --color-subtle:            var(--subtle);
+  --color-border:            var(--border);
+  --color-border-subtle:     var(--border-subtle);
+  --color-error:             var(--error);
+  --color-error-border:      var(--error-border);
+  --color-success:           var(--success);
+  --color-star:              var(--star);
+  --color-price:             var(--price);
+  --color-a11y-bg:           var(--a11y-bg);
+  --color-a11y-hover:        var(--a11y-hover);
+  --color-a11y-border:       var(--a11y-border);
+  --color-a11y-label:        var(--a11y-label);
   --font-sans:               var(--font-poppins);
   --font-mono:               var(--font-geist-mono);
 }

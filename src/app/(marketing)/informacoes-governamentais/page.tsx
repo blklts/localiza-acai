@@ -16,7 +16,7 @@ export default function InformacoesGovernamentais() {
       <PageTemplate title="Informações governamentais" heroBg="/carousel/5.webp" />
 
       {/* ── MOBILE (hidden on md+) ── */}
-      <div className="md:hidden relative w-full min-h-[480px] flex items-center justify-center bg-[#f5f5f5] overflow-hidden">
+      <div className="md:hidden relative w-full min-h-[480px] flex items-center justify-center bg-background-2 overflow-hidden">
         {/* wave behind everything */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -34,7 +34,7 @@ export default function InformacoesGovernamentais() {
             style={{ zIndex: 1 }}
           >
             {links.map(({ label, href }) => (
-              <a key={label} href={href} className="font-sans font-semibold text-sm text-[#f5f5f5] underline leading-snug hover:text-accent transition-colors">
+              <a key={label} href={href} className="font-sans font-semibold text-sm text-background-2 underline leading-snug hover:text-accent transition-colors">
                 {label}
               </a>
             ))}
@@ -47,7 +47,7 @@ export default function InformacoesGovernamentais() {
       </div>
 
       {/* ── DESKTOP (hidden below md) ── */}
-      <div className="hidden md:flex relative w-full min-h-[600px] items-center justify-center bg-[#f5f5f5] overflow-hidden">
+      <div className="hidden md:flex relative w-full min-h-[600px] items-center justify-center bg-background-2 overflow-hidden">
         {/* wave behind everything */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -65,7 +65,7 @@ export default function InformacoesGovernamentais() {
             style={{ zIndex: 1 }}
           >
             {links.map(({ label, href }) => (
-              <a key={label} href={href} className="font-sans font-semibold text-sm text-[#f5f5f5] underline leading-snug hover:text-accent transition-colors">
+              <a key={label} href={href} className="font-sans font-semibold text-sm text-background-2 underline leading-snug hover:text-accent transition-colors">
                 {label}
               </a>
             ))}

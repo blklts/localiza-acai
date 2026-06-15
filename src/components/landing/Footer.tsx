@@ -6,9 +6,9 @@ const contactLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#997aaf] text-[#f5f5f5]">
+    <footer className="bg-footer-bg text-footer-text">
       <div className="flex flex-col gap-4 px-6 pb-4 md:grid md:grid-cols-2 md:gap-6 md:px-[100px] w-full">
-        <div className="flex flex-col gap-1 text-xs text-[#f5f5f5] justify-end">
+        <div className="flex flex-col gap-1 text-xs text-footer-text justify-end">
           <p>Copyright © 2026 LocalizAçaí Projeto acadêmico. Universidade do Estado do Pará - UEPA</p>
           <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5">
             <a href="#" className="hover:underline whitespace-nowrap">Política de Privacidade</a>

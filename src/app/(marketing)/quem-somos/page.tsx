@@ -31,7 +31,7 @@ export default function QuemSomos() {
         >
           <div className="flex flex-col gap-6 p-4">
             {paragraphs.map((text, i) => (
-              <p key={i} className="text-zinc-500 text-base">{text}</p>
+              <p key={i} className="text-muted text-base">{text}</p>
             ))}
           </div>
         </PageTemplate>
@@ -51,7 +51,7 @@ export default function QuemSomos() {
           <div className="flex justify-evenly items-stretch w-full mx-[120px]">
             <div className="w-full flex flex-col gap-[60px] self-center text-left">
               {paragraphs.map((text, i) => (
-                <p key={i} className="text-zinc-500 text-lg">{text}</p>
+                <p key={i} className="text-muted text-lg">{text}</p>
               ))}
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function QuemSomos() {
       </div>
 
       {/* ── Testimonials (shared) ── */}
-      <div className="bg-[#f5f5f5]">
+      <div className="bg-background-2">
         <section className="bg-background py-[36px] relative mb-20">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-16 z-10 bg-gradient-to-r from-background to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:w-16 z-10 bg-gradient-to-l from-background to-transparent" />
@@ -76,7 +76,7 @@ export default function QuemSomos() {
                   </div>
                   <div className="flex gap-2 items-start">
                     <span className="text-primary text-4xl md:text-5xl leading-none select-none flex-shrink-0">&ldquo;</span>
-                    <p className="text-zinc-700 font-sans font-normal text-[16px] leading-none">{member.quote}</p>
+                    <p className="text-medium font-sans font-normal text-[16px] leading-none">{member.quote}</p>
                   </div>
                 </div>
               ))}

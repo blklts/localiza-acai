@@ -11,7 +11,7 @@ import { useMobile } from '@/hooks/useMobile';
 
 function createAcaiIcon(stars: number) {
   return L.divIcon({
-    html: `<div style="background:#DB6006;border-radius:20px;padding:3px 8px;box-shadow:0 2px 6px rgba(0,0,0,0.25);font-size:13px;font-weight:700;color:#f5f5f5;white-space:nowrap;display:flex;align-items:center;gap:2px;">${stars}<img src="/icons/estrela 2.svg" alt="" style="width:13px;height:13px;filter:brightness(0) invert(1);" /></div>`,
+    html: `<div style="background:var(--secondary);border-radius:20px;padding:3px 8px;box-shadow:0 2px 6px rgba(0,0,0,0.25);font-size:13px;font-weight:700;color:var(--background-2);white-space:nowrap;display:flex;align-items:center;gap:2px;">${stars}<img src="/icons/estrela 2.svg" alt="" style="width:13px;height:13px;filter:brightness(0) invert(1);" /></div>`,
     className: '',
     iconSize: [40, 26],
     iconAnchor: [20, 13],
@@ -42,7 +42,7 @@ function parsePriceMin(price: string): number {
 
 function Stars({ count }: { count: number }) {
   return (
-    <span className="text-yellow-400 text-lg tracking-tight">
+    <span className="text-star text-lg tracking-tight">
       {Array.from({ length: 5 }, (_, i) => (i < count ? '★' : '☆')).join('')}
     </span>
   );
@@ -105,7 +105,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       {/* Sidebar */}
       <div
-        className={`fixed bg-white shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out ${
+        className={`fixed bg-surface shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out ${
           isMobile
             ? `left-0 right-0 bottom-0 h-[75vh] rounded-t-2xl ${selected ? 'translate-y-0' : 'translate-y-full'}`
             : `left-0 top-[68px] h-[calc(100%-68px)] w-80 ${selected ? 'translate-x-0' : '-translate-x-full'}`
@@ -115,7 +115,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
         {/* Mobile drag handle */}
         {isMobile && (
           <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
-            <div className="w-10 h-1 rounded-full bg-gray-300" />
+            <div className="w-10 h-1 rounded-full bg-border" />
           </div>
         )}
         {selected && (
@@ -130,7 +130,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
               />
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-3 right-3 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow text-gray-600 hover:text-gray-900 hover:shadow-md transition-all"
+                className="absolute top-3 right-3 bg-surface rounded-full w-8 h-8 flex items-center justify-center shadow text-label hover:text-foreground hover:shadow-md transition-all"
                 aria-label="Fechar"
               >
                 ✕
@@ -139,16 +139,16 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
 
             <div className="p-5 flex flex-col gap-4">
               {/* Name */}
-              <h2 className="text-xl font-bold text-gray-900 leading-tight">{selected.name}</h2>
+              <h2 className="text-xl font-bold text-foreground leading-tight">{selected.name}</h2>
 
               {/* Stars */}
               <div className="flex items-center gap-2">
                 <Stars count={selected.stars} />
-                <span className="text-sm text-gray-500">{selected.stars}/5</span>
+                <span className="text-sm text-muted">{selected.stars}/5</span>
               </div>
 
               {/* Info rows */}
-              <div className="flex flex-col gap-2 text-sm text-gray-700">
+              <div className="flex flex-col gap-2 text-sm text-medium">
                 {selected.address && (
                   <p className="flex gap-2">
                     <span>📍</span>
@@ -182,7 +182,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
                 {selected.instagram && (
                   <p className="flex gap-2">
                     <span>📱</span>
-                    <a href={selected.instagram} target="_blank" rel="noopener noreferrer" className="text-purple-600 underline break-all">
+                    <a href={selected.instagram} target="_blank" rel="noopener noreferrer" className="text-primary underline break-all">
                       Instagram
                     </a>
                   </p>
@@ -192,21 +192,21 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
               {/* Menu */}
               {selected.menu && selected.menu.length > 0 && (
                 <>
-                  <hr className="border-gray-200" />
+                  <hr className="border-border-subtle" />
                   <div className="flex flex-col gap-3">
-                    <p className="text-sm font-semibold text-gray-800">Cardápio Adicional</p>
+                    <p className="text-sm font-semibold text-strong">Cardápio Adicional</p>
                     <div className="flex flex-col gap-2">
                       {selected.menu.map((item: MenuItem, i: number) => (
-                        <div key={i} className="flex items-center gap-3 bg-gray-50 rounded-lg p-2">
+                        <div key={i} className="flex items-center gap-3 bg-surface-alt rounded-lg p-2">
                           <img
                             src={item.imageUrl}
                             alt={item.name}
                             className="w-14 h-14 object-cover rounded-md flex-shrink-0"
                           />
                           <div className="flex flex-col gap-0.5 min-w-0">
-                            <span className="text-sm font-medium text-gray-800 leading-tight truncate">{item.name}</span>
-                            <span className="text-xs text-gray-500">{item.unit}</span>
-                            <span className="text-sm font-semibold text-orange-600">{item.price}</span>
+                            <span className="text-sm font-medium text-strong leading-tight truncate">{item.name}</span>
+                            <span className="text-xs text-muted">{item.unit}</span>
+                            <span className="text-sm font-semibold text-price">{item.price}</span>
                           </div>
                         </div>
                       ))}
@@ -216,13 +216,13 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
               )}
 
               {/* Divider */}
-              <hr className="border-gray-200" />
+              <hr className="border-border-subtle" />
 
               {/* Feedback */}
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-semibold text-gray-800">Feedback</label>
+                <label className="text-sm font-semibold text-strong">Feedback</label>
                 <textarea
-                  className="w-full border border-gray-300 rounded-lg p-3 text-sm text-gray-800 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                  className="w-full border border-border rounded-lg p-3 text-sm text-strong placeholder-subtle resize-none focus:outline-none focus:ring-2 focus:ring-on-primary-hover focus:border-transparent"
                   rows={4}
                   placeholder="Qual seu comentário?"
                   value={feedbacks[selected.id] ?? ''}
@@ -232,7 +232,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
                   }}
                 />
                 {sent[selected.id] ? (
-                  <p className="text-sm text-green-600 font-medium">✓ Comentário enviado!</p>
+                  <p className="text-sm text-success font-medium">✓ Comentário enviado!</p>
                 ) : (
                   <button
                     onClick={() => {
@@ -240,7 +240,7 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
                         setSent((prev) => ({ ...prev, [selected.id]: true }));
                       }
                     }}
-                    className="w-full bg-purple-600 hover:bg-purple-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-semibold py-2 rounded-lg transition-colors"
+                    className="w-full bg-primary hover:bg-primary-dark disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-semibold py-2 rounded-lg transition-colors"
                     disabled={!feedbacks[selected.id]?.trim()}
                   >
                     Enviar comentário
@@ -307,10 +307,10 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
             value={filterDistance ?? ''}
             onChange={(e) => setFilterDistance(e.target.value === '' ? null : Number(e.target.value))}
           >
-            <option value=""  className="bg-white text-gray-800">Distância</option>
-            <option value="1" className="bg-white text-gray-800">Até 1 km</option>
-            <option value="2" className="bg-white text-gray-800">Até 2 km</option>
-            <option value="5" className="bg-white text-gray-800">Até 5 km</option>
+            <option value=""  className="bg-surface text-foreground">Distância</option>
+            <option value="1" className="bg-surface text-foreground">Até 1 km</option>
+            <option value="2" className="bg-surface text-foreground">Até 2 km</option>
+            <option value="5" className="bg-surface text-foreground">Até 5 km</option>
           </select>
         </div>
 
@@ -322,10 +322,10 @@ export default function MapComponent({ locations, q, sort, minStars, maxDistance
             value={filterStars ?? ''}
             onChange={(e) => setFilterStars(e.target.value === '' ? null : Number(e.target.value))}
           >
-            <option value=""  className="bg-white text-gray-800">Estrelas</option>
-            <option value="5" className="bg-white text-gray-800">5 estrelas</option>
-            <option value="4" className="bg-white text-gray-800">4+ estrelas</option>
-            <option value="3" className="bg-white text-gray-800">3+ estrelas</option>
+            <option value=""  className="bg-surface text-foreground">Estrelas</option>
+            <option value="5" className="bg-surface text-foreground">5 estrelas</option>
+            <option value="4" className="bg-surface text-foreground">4+ estrelas</option>
+            <option value="3" className="bg-surface text-foreground">3+ estrelas</option>
           </select>
         </div>
 

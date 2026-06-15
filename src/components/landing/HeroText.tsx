@@ -10,7 +10,7 @@ export default function HeroText() {
   return (
     <div className="flex flex-col gap-6">
       <h1 className="text-[32px] md:text-[40px] font-bold text-white md:text-primary font-sans leading-tight">
-        Encontre um ponto de<br /><span className="text-[#40AC8E]">açaí seguro</span> perto de você
+        Encontre um ponto de<br /><span className="text-accent">açaí seguro</span> perto de você
       </h1>
 
       <div className="flex flex-col items-start gap-3 md:flex-row md:flex-wrap md:items-stretch">
@@ -21,7 +21,7 @@ export default function HeroText() {
       </div>
 
       <div className="flex flex-col gap-3">
-        <p className="font-sans font-normal text-[16px] leading-snug tracking-normal text-white/80 md:text-zinc-600">
+        <p className="font-sans font-normal text-[16px] leading-snug tracking-normal text-white/80 md:text-label">
             Localize o ponto de venda mais próximo de você em Belém e Região Metropolitana. Aqui tu tem uma experiencia personalizada, podendo escolher a melhor maneira de encontrar um produto de qualidade assegurada pelo selo governamental de maneira rápida simples e de acordo com tuas preferências.
         </p>
       </div>

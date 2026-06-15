@@ -103,8 +103,8 @@ function parseCsvLocations(): AcaiLocation[] {
 
 function LoadingScreen() {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-zinc-100">
-      <p className="text-zinc-500">Carregando mapa...</p>
+    <div className="flex h-full w-full items-center justify-center bg-surface-alt">
+      <p className="text-muted">Carregando mapa...</p>
     </div>
   );
 }
