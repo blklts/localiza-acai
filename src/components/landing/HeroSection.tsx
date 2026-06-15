@@ -9,8 +9,8 @@ export default function HeroSection() {
         <ImageCarousel />
       </div>
 
-      {/* Mobile: solid primary covers the carousel */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-primary-dark md:hidden" />
+      {/* Mobile: background color covers the carousel, responds to dark mode */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-background md:hidden" />
 
 
       {/* Desktop: directional gradient from background to transparent */}
